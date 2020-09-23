@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_form %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{title.capitalize()}}</h2>
+        <br>
+
+        {{ render_form(form) }}
+    </div>
+{% endblock %}
+

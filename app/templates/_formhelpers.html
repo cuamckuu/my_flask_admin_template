@@ -1,0 +1,37 @@
+{% macro render_form(form) -%}
+    <form method="POST">
+
+        {% for field in form %}
+            {% if field.type != 'SubmitField' %}
+            <div class="form-group">
+
+                {{ field.label() }}
+                {{ field(class_="form-control") }}
+
+                {% for error in field.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+
+            </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="form-inline justify-content-between">
+        {{ form.submit(class_="form-control btn btn-primary") }}
+
+        {% if form.delete %}
+        {{ form.delete(class_="form-control btn btn-danger") }}
+        {% endif %}
+        </div>
+
+    </form>
+
+<style>
+select.form-control {
+    -webkit-transition: none;
+    transition: none;
+}
+</style>
+
+{%- endmacro %}
+
